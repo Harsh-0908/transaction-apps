@@ -339,7 +339,6 @@ $end = min($start + $per_page - 1, $total_users);
             });
         </script>
 </body>
-
 </html>
 
 
