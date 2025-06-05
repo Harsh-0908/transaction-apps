@@ -24,7 +24,7 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 if ($page < 1) $page = 1;
 $offset = ($page - 1) * $per_page;
 
-$user_query = $conn->query("SELECT * FROM User ORDER BY firstname, lastname");
+$user_query = $conn->query("SELECT * FROM User ORDER BY firstname, lastname LIMIT $offset, $per_page");
 while ($user = $user_query->fetch_assoc()) {
     $stmt = $conn->prepare("SELECT SUM(amount) as paid_sum FROM Transaction WHERE user_id = ?");
     $stmt->bind_param('i', $user['id']);
